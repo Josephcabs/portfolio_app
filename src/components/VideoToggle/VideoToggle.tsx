@@ -1,30 +1,33 @@
-'use client'
+"use client";
 
 import clsx from "clsx";
-import {  useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 export default function VideoToggle() {
-    const [videoVisible, setVideoVisible] = useState(false);
+  const [videoVisible, setVideoVisible] = useState(false);
 
-    useEffect(() => {
-      setVideoVisible(true); 
-    }, []);
+  useEffect(() => {
+    setVideoVisible(true);
+  }, []);
 
-    const toggleVideo = () => {
-      setVideoVisible(!videoVisible);
-    };
+  const toggleVideo = () => {
+    setVideoVisible(!videoVisible);
+  };
 
-    return (
-         <>
+  return (
+    <>
       <button
         onClick={toggleVideo}
-        className={clsx("fixed",
-            {
-          " bottom-[31%]" : videoVisible,
-          'bottom-[0%]' : !videoVisible,
-          'bg-transparent' : !videoVisible,
-          'bg-red-600' : videoVisible
-            } ,"left-0 z-20 px-6 py-2 rounded md:hidden hover:bg-red-600 antialiased overflow-hidden duration-500 transition-all hover:text-black hover:px-4 hover:bg-opacity-80 hover:text-opacity-100")}
+        className={clsx(
+          "fixed",
+          {
+            " bottom-[31%]": videoVisible,
+            "bottom-[0%]": !videoVisible,
+            "bg-transparent": !videoVisible,
+            "bg-red-600": videoVisible,
+          },
+          "left-0 z-20 px-6 py-2 rounded md:hidden hover:bg-red-600 antialiased overflow-hidden duration-500 transition-all hover:text-black hover:px-4 hover:bg-opacity-80 hover:text-opacity-100",
+        )}
       >
         {videoVisible ? "Hide Video" : "Show Video"}
       </button>
@@ -38,6 +41,6 @@ export default function VideoToggle() {
           Your browser does not support the video tag.
         </iframe>
       )}
-         </>
-         )
+    </>
+  );
 }

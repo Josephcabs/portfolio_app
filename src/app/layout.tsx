@@ -39,7 +39,7 @@ export default function RootLayout({
           </div>
         </div>
         {children}
-        <VideoToggle/>
+        <VideoToggle />
         <img
           src="/boxing.png"
           alt="Boxing"
