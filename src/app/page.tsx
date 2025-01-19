@@ -54,7 +54,7 @@ export default function Home() {
             About Me
           </h1>
         </div>
-        <div className="flex flex-col items-center justify-center w-[60%] pb-5">
+        <div className="flex flex-col items-center justify-center pb-5 w-[90%] sm:w-[80%] md:w-[60%] ">
           <Card
             sx={{ color: "#666", backgroundColor: "#171717" }}
             className="transition-all duration-300 border-2 border-transparent hover:border-red-600 hover:shadow-lg hover:shadow-red-600"
@@ -68,7 +68,7 @@ export default function Home() {
               <Typography
                 gutterBottom
                 component="p"
-                className="text-center font-bold text-2xl"
+                className="text-center text-1xl md:font-bold md:text-2xl"
               >
                 I am a boxer in training, I am resilient and I am hard working
                 when achieving personal goals. This lead me to improve my skills
@@ -96,7 +96,7 @@ export default function Home() {
             </CardActions>
           </Card>
         </div>
-        <div className="w-[60%] flex justify-center text-4xl pb-5">
+        <div className=" flex justify-center text-4xl pb-5 w-[90%] sm:w-[80%] md:w-[60%]">
           <Card
             sx={{ color: "#666", backgroundColor: "#171717" }}
             className="transition-all duration-300 border-2 border-transparent hover:border-red-600 hover:shadow-lg hover:shadow-red-600"
@@ -126,7 +126,7 @@ export default function Home() {
               <Typography
                 gutterBottom
                 component="p"
-                className="text-center font-bold text-2xl"
+                className="text-center text-1xl md:font-bold md:text-2xl"
               >
                 I&apos;ve been programming since 2021 and I am always looking
                 for new challenges to improve. I have experience with React,
@@ -214,9 +214,16 @@ export default function Home() {
         <button
           id="back-to-top"
           onClick={scrollToTop}
-          className="fixed bottom-0 w-40 right-0 text-1xl text-[#666] w-auto transition-all duration-500 hover:text-[#8a0303] hover:bg-red-950 font-bold"
+          className="fixed bottom-0 right-0 text-1xl text-[#666] w-auto transition-all duration-500 hover:text-black hover:bg-red-600 font-bold hover:bg-opacity-80 
+    hover:text-opacity-100 
+    antialiased 
+    overflow-hidden 
+    hover:px-4
+    hover:bg-opacity-80 
+    hover:text-opacity-100
+    "
         >
-          Scroll To Top
+          Go To Top
         </button>
       )}
     </>
