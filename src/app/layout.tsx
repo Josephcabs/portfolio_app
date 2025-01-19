@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Links from "@/components/Links";
 import Header from "@/components/Header";
-import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,11 +46,11 @@ export default function RootLayout({
         >
           Your browser does not support the video tag.
         </iframe>
-        <Image
-        src="/boxing.png"
-        alt="Boxing"
-        className="fixed bottom-0 left-0 right-0 top-0 h-full w-full -z-10"
-      />
+        <img
+          src="/boxing.png"
+          alt="Boxing"
+          className="fixed bottom-0 left-0 right-0 top-0 h-full w-full -z-10"
+        />
       </body>
     </html>
   );
