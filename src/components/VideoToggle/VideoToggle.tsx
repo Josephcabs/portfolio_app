@@ -7,7 +7,12 @@ export default function VideoToggle() {
   const [videoVisible, setVideoVisible] = useState(false);
 
   useEffect(() => {
+    if(window.innerWidth > 768){
     setVideoVisible(true);
+    }
+    else{
+      setVideoVisible(false);
+    }
   }, []);
 
   const toggleVideo = () => {

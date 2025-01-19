@@ -21,7 +21,7 @@ export default function Links() {
     overflow-hidden 
     duration-500 
     transition-all 
-    hover:px-4
+    md:hover:px-4
     hover:bg-opacity-80 
     hover:text-opacity-100
     hover:animate-pulse
@@ -46,7 +46,7 @@ export default function Links() {
     overflow-hidden 
     duration-500 
     transition-all 
-    hover:px-4
+    md:hover:px-4
     hover:bg-opacity-80 
     hover:text-opacity-100
     hover:animate-pulse
@@ -72,7 +72,7 @@ export default function Links() {
     overflow-hidden 
     duration-500 
     transition-all 
-    hover:px-4
+    md:hover:px-4
     hover:bg-opacity-80 
     hover:text-opacity-100
     hover:animate-pulse

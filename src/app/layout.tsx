@@ -4,6 +4,7 @@ import "./globals.css";
 import Links from "@/components/Links";
 import Header from "@/components/Header";
 import VideoToggle from "@/components/VideoToggle/VideoToggle";
+import { Analytics } from "@vercel/analytics/react"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Analytics />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
