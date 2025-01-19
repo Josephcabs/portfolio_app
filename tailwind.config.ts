@@ -8,9 +8,22 @@ export default {
   ],
   theme: {
     extend: {
+      animation: {
+        "gradient-flow": "gradient-flow 3s ease infinite",
+      },
+      keyframes: {
+        "gradient-flow": {
+          "0%": { "background-position": "0% 50%" },
+          "50%": { "background-position": "100% 50%" },
+          "100%": { "background-position": "0% 50%" },
+        },
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      zIndex: {
+        "1000": "1000",
       },
     },
   },
