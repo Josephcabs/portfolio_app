@@ -14,11 +14,11 @@ export default function Repos() {
         <h1 className="flex items-center justify-center text-4xl font-bold py-12 text-4xl bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow">
           Repositories
         </h1>
-        <div className="flex flex-row items-center justify-center">
-          <div className="w-1/3 flex justify-center text-4xl p-5">
+        <div className="flex flex-col md:flex-row items-center justify-center">
+          <div className="w-[90%] sm:w-[80%] md:w-[60%] flex justify-center text-4xl p-5">
             <Card
               className="transition-all duration-300 border-2 border-transparent hover:border-red-600 hover:shadow-lg hover:shadow-red-600"
-              sx={{ maxWidth: 600, color: "#666", backgroundColor: "#171717" }}
+              sx={{ color: "#666", backgroundColor: "#171717" }}
             >
               <CardMedia component="img" height="140" image="/project.png" />
               <CardContent className="text-center text-[#666]">
@@ -57,7 +57,7 @@ export default function Repos() {
               </CardActions>
             </Card>
           </div>
-          <div className="w-1/3 flex justify-center text-4xl p-5">
+          <div className="w-[90%] sm:w-[80%] md:w-[60%] flex justify-center text-4xl p-5">
             <Card
               className="transition-all duration-300 border-2 border-transparent hover:border-red-600 hover:shadow-lg hover:shadow-red-600"
               sx={{ maxWidth: 600, color: "#666", backgroundColor: "#171717" }}

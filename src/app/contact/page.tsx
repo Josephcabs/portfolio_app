@@ -15,11 +15,9 @@ export default function Contact() {
         <h1 className="flex tems-center justify-center text-4xl font-bold py-12 text-4xl bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow">
           Contact Me
         </h1>
-        <div className="w-1/2 flex justify-center text-4xl pb-5">
+        <div className="w-[90%] sm:w-[80%] md:w-[60%] flex justify-center text-4xl pb-5">
           <Card
             sx={{
-              width: "100%",
-              maxWidth: 600,
               color: "#666",
               backgroundColor: "#171717",
             }}
@@ -73,11 +71,9 @@ export default function Contact() {
           </Card>
         </div>
 
-        <div className="w-1/2 flex justify-center text-4xl pb-5">
+        <div className="w-[90%] sm:w-[80%] md:w-[60%] flex justify-center text-4xl pb-5">
           <Card
             sx={{
-              width: "100%",
-              maxWidth: 600,
               color: "#666",
               backgroundColor: "#171717",
             }}
