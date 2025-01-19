@@ -29,14 +29,23 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className='w-full flex flex-col sticky top-0 z-1000  bg-[#0a0a0a]'>
-    <div className="text-4xl font-bold text-center">
-      <Header />
-    </div>
-    <div className="flex items-center justify-center gap-12 text-2xl w-full">
-    <Links/></div>
-    </div>
+        <div className="w-full flex flex-col sticky top-0 z-1000  bg-[#0a0a0a]">
+          <div className="text-4xl font-bold text-center">
+            <Header />
+          </div>
+          <div className="flex items-center justify-center gap-12 text-2xl w-full">
+            <Links />
+          </div>
+        </div>
         {children}
+        <iframe
+          className="fixed left-o right-0 bottom-0 z-0"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          src="https://www.youtube.com/embed/gaOTSMB6hLQ&t=1s?autoplay=1&mute=1&loop=1&playlist=gaOTSMB6hLQ&t=1s"
+        >
+          Your browser does not support the video tag.
+        </iframe>
       </body>
     </html>
   );

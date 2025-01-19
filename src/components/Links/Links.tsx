@@ -1,11 +1,12 @@
-'use client'
+"use client";
 import { useRouter } from "next/navigation";
 
 export default function Links() {
-    const router = useRouter();
-    return (
-        <>
-                <button className="relative 
+  const router = useRouter();
+  return (
+    <>
+      <button
+        className="relative 
     cursor-pointer 
     hover:text-[#0a0a0a]
     hover:rounded-lg
@@ -24,11 +25,13 @@ export default function Links() {
     hover:bg-opacity-80 
     hover:text-opacity-100
     hover:animate-pulse
-    bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow" 
-    onClick={() => router.push('/')}>
-                Home
-                </button>
-                <button className="relative 
+    bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
+        onClick={() => router.push("/")}
+      >
+        Home
+      </button>
+      <button
+        className="relative 
     cursor-pointer 
     hover:text-[#0a0a0a]
     hover:rounded-lg
@@ -48,8 +51,13 @@ export default function Links() {
     hover:text-opacity-100
     hover:animate-pulse
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow
-    " onClick={() => router.push('/contact')}>Contact Me</button>
-                <button className="relative 
+    "
+        onClick={() => router.push("/contact")}
+      >
+        Contact Me
+      </button>
+      <button
+        className="relative 
     cursor-pointer 
     hover:text-[#0a0a0a]
     hover:rounded-lg
@@ -68,7 +76,11 @@ export default function Links() {
     hover:bg-opacity-80 
     hover:text-opacity-100
     hover:animate-pulse
-    bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow" onClick={() => router.push('/repos')}>Repositories</button>
-        </>
-    )
+    bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
+        onClick={() => router.push("/repos")}
+      >
+        Repositories
+      </button>
+    </>
+  );
 }
