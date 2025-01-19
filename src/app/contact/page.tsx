@@ -44,7 +44,7 @@ export default function Contact() {
               <Typography
                 gutterBottom
                 component="p"
-                className="text-1-xl text-center"
+                className="text-2xl font-bold text-center"
               >
                 This is my linkedin, where you can find more about me, my
                 interests, and connections.
@@ -56,6 +56,7 @@ export default function Contact() {
               <Button
                 href="https://www.linkedin.com/in/joseph-caballero-811bab280/"
                 size="small"
+                target="_blank"
                 className="hover:bg-red-600 antialiased 
     overflow-hidden 
     duration-500 
@@ -101,7 +102,7 @@ export default function Contact() {
               <Typography
                 gutterBottom
                 component="p"
-                className="text-1-xl text-center"
+                className="text-2xl font-bold text-center"
               >
                 This is my email
                 <br />
@@ -112,6 +113,7 @@ export default function Contact() {
               <Button
                 href="mailto:Jxcaballero244@gmail.com"
                 size="small"
+                target="_blank"
                 className="hover:bg-red-600 antialiased 
     overflow-hidden 
     duration-500 

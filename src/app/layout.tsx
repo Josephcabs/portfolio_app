@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Links from "@/components/Links";
 import Header from "@/components/Header";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,13 +40,18 @@ export default function RootLayout({
         </div>
         {children}
         <iframe
-          className="fixed left-o right-0 bottom-0 z-0"
+          className="fixed bottom-0 right-0 w-[20%]"
           allow="autoplay; fullscreen"
           allowFullScreen
           src="https://www.youtube.com/embed/gaOTSMB6hLQ&t=1s?autoplay=1&mute=1&loop=1&playlist=gaOTSMB6hLQ&t=1s"
         >
           Your browser does not support the video tag.
         </iframe>
+        <Image
+        src="/boxing.png"
+        alt="Boxing"
+        className="fixed bottom-0 left-0 right-0 top-0 h-full w-full -z-10"
+      />
       </body>
     </html>
   );
