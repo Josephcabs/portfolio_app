@@ -1,4 +1,11 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 
 export default function Repos() {
   return (
@@ -25,13 +32,14 @@ export default function Repos() {
                   <br />
                   Making api calls to get the data from the backend to display
                   on all the pages, styling the page and making it look good,
-                  managing the database, making the cart page , making the checkout page ,
-                  troubleshooting issues, heavily reviewing the pull requests, and managing the team.
+                  managing the database, making the cart page , making the
+                  checkout page , troubleshooting issues, heavily reviewing the
+                  pull requests, and managing the team.
                 </Typography>
               </CardContent>
               <CardActions className="flex justify-center">
-                <Button 
-                className="hover:bg-red-600 antialiased 
+                <Button
+                  className="hover:bg-red-600 antialiased 
     overflow-hidden 
     duration-500 
     transition-all 
@@ -39,10 +47,10 @@ export default function Repos() {
     hover:px-4
     hover:bg-opacity-80 
     hover:text-opacity-100"
-                size="small" 
-                href="https://24q4-team1.vercel.app/"
-                target="_blank"
-                sx={{ fontSize: "1rem", color: "#666" }}
+                  size="small"
+                  href="https://24q4-team1.vercel.app/"
+                  target="_blank"
+                  sx={{ fontSize: "1rem", color: "#666" }}
                 >
                   Access Project
                 </Button>
@@ -64,15 +72,16 @@ export default function Repos() {
                   In this repository I was responsible for the following:
                   <br />
                   <br />
-                  Making sure my work was consistent and organized, making sure my
-                  code was clean and efficient, making sure my code was
-                  well-tested, making sure my code was well-documented, understanding the work,
-                  troubleshooting issues, rapid learning, and being a team player to collaborate on tasks.
+                  Making sure my work was consistent and organized, making sure
+                  my code was clean and efficient, making sure my code was
+                  well-tested, making sure my code was well-documented,
+                  understanding the work, troubleshooting issues, rapid
+                  learning, and being a team player to collaborate on tasks.
                 </Typography>
               </CardContent>
               <CardActions className="flex justify-center">
-                <Button 
-                className="hover:bg-red-600 antialiased 
+                <Button
+                  className="hover:bg-red-600 antialiased 
     overflow-hidden 
     duration-500 
     transition-all 
@@ -80,10 +89,10 @@ export default function Repos() {
     hover:px-4
     hover:bg-opacity-80 
     hover:text-opacity-100"
-                size="small" 
-                href="https://github.com/code-differently/code-differently-24-q4/pulls?q=is%3Apr+author%3AjosephCabs"
-                target="_blank"
-                sx={{ fontSize: "1rem", color: "#666" }}
+                  size="small"
+                  href="https://github.com/code-differently/code-differently-24-q4/pulls?q=is%3Apr+author%3AjosephCabs"
+                  target="_blank"
+                  sx={{ fontSize: "1rem", color: "#666" }}
                 >
                   View My Work In My Bootcamp
                 </Button>

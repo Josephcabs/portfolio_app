@@ -56,7 +56,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col items-center justify-center w-[60%] pb-5">
           <Card
-            sx={{  color: "#666", backgroundColor: "#171717" }}
+            sx={{ color: "#666", backgroundColor: "#171717" }}
             className="transition-all duration-300 border-2 border-transparent hover:border-red-600 hover:shadow-lg hover:shadow-red-600"
           >
             <CardMedia
@@ -116,7 +116,12 @@ export default function Home() {
                 />
               }
             />
-            <CardMedia component="img" height="600"  image="/coding.png" aria-label="coding"/>
+            <CardMedia
+              component="img"
+              height="600"
+              image="/coding.png"
+              aria-label="coding"
+            />
             <CardContent>
               <Typography
                 gutterBottom
@@ -172,8 +177,8 @@ export default function Home() {
                     <br />I continue making sites and building upon what i
                     currently have to never stop growing and to apply what I
                     apply to boxing, a strong will and determination.
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                     <button
                       onClick={viewLess}
                       className="text-1xl font-normal text-[#666] w-[200px] hover:w-[250px]  transition-all duration-500 hover:px-4 hover:text-black hover:bg-red-600 font-bold"
