@@ -5,6 +5,8 @@ import Links from "@/components/Links";
 import Header from "@/components/Header";
 import VideoToggle from "@/components/VideoToggle/VideoToggle";
 import { Analytics } from "@vercel/analytics/react";
+import { Suspense } from "react";
+import Loader from "@/components/Loader/Loader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,8 +42,10 @@ export default function RootLayout({
             <Links />
           </div>
         </div>
-        {children}
-        <VideoToggle />
+        <Suspense fallback={<Loader />}>
+          {children}
+          <VideoToggle />
+        </Suspense>
         <img
           src="/boxing.png"
           alt="Boxing"

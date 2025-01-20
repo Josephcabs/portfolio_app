@@ -28,6 +28,12 @@ const Terminal = () => {
     }
   };
 
+  useEffect(() => {
+    if (messages.length > 4) {
+      messages.shift();
+    }
+  }, [messages]);
+
   const handleInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const set = ["about", "projects", "contact", "experience"];
     if (e.key === "Enter") {
@@ -121,7 +127,7 @@ const Terminal = () => {
   return (
     <div className="bg-black">
       <div
-        className="overflow-y-auto bg-black text-red-600 font-mono p-6 rounded-lg shadow-lg w-full max-w-lg mx-auto mt-20 border border-red-600 transition-all duration-500 hover:shadow-2xl hover:bg-[#0a0a0a]
+        className="overflow-y-hidden bg-black text-red-600 font-mono p-6 rounded-lg shadow-lg w-full max-w-lg mx-auto mt-0 border border-red-600 transition-all duration-500 hover:shadow-2xl hover:bg-[#0a0a0a]
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
       >
         <div ref={messagesEndRef}>
