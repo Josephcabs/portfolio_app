@@ -73,17 +73,39 @@ export default function Repos() {
                   <ul className="list-disc px-4 space-y-2 md:space-y-4">
                     <li>
                       Making api calls to get the data from the backend to
-                      display on all the pages{" "}
+                      display on all the pages
                     </li>
                     {viewEccom && (
                       <>
-                        <li>styling the page and making it look good</li>
-                        <li>managing the database </li>
-                        <li>making the cart page </li>
-                        <li>making the checkout page</li>
-                        <li>troubleshooting issues </li>
-                        <li>heavily reviewing the pull requests </li>
-                        <li>and managing the team</li>
+                        <li>
+                          Styling the page to make it more aesthetic and
+                          ensuring data displays properly throughout the
+                          experience
+                        </li>
+                        <li>
+                          Managed database operations, ensuring data integrity,
+                          optimization, and smooth backend interactions
+                        </li>
+                        <li>
+                          Developed key e-commerce features, including the cart,
+                          checkout, and product pages, focusing on functionality
+                          and user experience
+                        </li>
+                        <li>
+                          Identified and resolved technical issues, ensuring
+                          smooth application performance through thorough
+                          debugging and troubleshooting
+                        </li>
+                        <li>
+                          Conducted comprehensive code reviews, ensuring code
+                          quality, adherence to best practices, and seamless
+                          integration of new features
+                        </li>
+                        <li>
+                          Led the development team, facilitating collaboration,
+                          task management, and project progress to meet
+                          deadlines effectively
+                        </li>
                       </>
                     )}
                   </ul>
@@ -137,16 +159,31 @@ export default function Repos() {
                   <br />
                   <br />
                   <ul className="list-disc px-4 space-y-2 md:space-y-4">
-                    <li>Making sure my work was consistent and organized</li>
+                    <li>Ensuring consistency and organization in my work</li>
                     {viewWork && (
                       <>
-                        <li>making sure my code was clean and efficient</li>
-                        <li>making sure my code was well-tested </li>
-                        <li> making sure my code was well-documented</li>
-                        <li>understanding the work </li>
-                        <li>troubleshooting issues</li>
-                        <li>rapid learning </li>
-                        <li>and being a team player to collaborate on tasks</li>
+                        <li>Writing clean, efficient, and maintainable code</li>
+                        <li>
+                          Conducting thorough testing to ensure code reliability
+                        </li>
+                        <li>
+                          Documenting code effectively for future
+                          maintainability
+                        </li>
+                        <li>
+                          Developing a deep understanding of project
+                          requirements
+                        </li>
+                        <li>
+                          Diagnosing and resolving technical issues efficiently
+                        </li>
+                        <li>
+                          Quickly adapting to new concepts and technologies
+                        </li>
+                        <li>
+                          Collaborating effectively with team members to achieve
+                          goals
+                        </li>
                       </>
                     )}
                   </ul>
