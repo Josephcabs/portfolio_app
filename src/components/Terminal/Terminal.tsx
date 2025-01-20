@@ -41,7 +41,7 @@ const Terminal = () => {
   }, [messages]);
 
   const handleInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const set = ["about", "projects", "contact", "experience"];
+    const set = ["about", "repos", "contact", "experience"];
     if (e.key === "Enter") {
       const userInput = input.toLowerCase().trim();
       const newMessages = [...messages, `> ${input}`];
@@ -67,8 +67,8 @@ const Terminal = () => {
           newMessages.push(
             "I've worked on multiple projects in group environments. Would you like to know more about my projects? y/n",
           );
-          setLastCommand("projects");
-          setRoute("projects");
+          setLastCommand("repos");
+          setRoute("repos");
           break;
 
         case "contact":
