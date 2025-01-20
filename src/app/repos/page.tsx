@@ -7,10 +7,15 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Repos() {
   const [isVisible, setIsVisible] = useState(false);
+  const [viewEccom, setViewEccom] = useState(false);
+  const [viewWork, setViewWork] = useState(false);
+
+  const router = useRouter();
 
   const handleScroll = () => {
     if (window.scrollY > 100) {
@@ -39,6 +44,12 @@ export default function Repos() {
         <h1 className="flex items-center justify-center text-4xl font-bold py-12 text-4xl bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow">
           Repositories
         </h1>
+        <button
+          onClick={() => router.push("/")}
+          className="text-3xl left-0 text-red-600 px-6 py-2 rounded hover:bg-red-600 antialiased overflow-hidden duration-500 transition-all hover:text-black hover:px-4 hover:bg-opacity-80 hover:text-opacity-100"
+        >
+          Back to terminal
+        </button>
         <div className="flex flex-col md:flex-row items-center justify-center">
           <div className="w-[90%] sm:w-[80%] md:w-[60%] flex justify-center text-4xl p-5">
             <Card
@@ -47,19 +58,42 @@ export default function Repos() {
             >
               <CardMedia component="img" height="140" image="/project.png" />
               <CardContent className="text-center text-[#666]">
-                <Typography gutterBottom variant="h4" component="div">
-                  Ecommerce Site
+                <Typography
+                  gutterBottom
+                  className="text-3xl md:text-4xl"
+                  component="p"
+                >
+                  E-commerce Site
                 </Typography>
-                <Typography variant="h6">Description:</Typography>
-                <Typography component="div" className="text-2xl">
+                <Typography component="p" className="text-2xl md:text-3xl">
                   In this project I was responsible for the following:
+                </Typography>
+                <Typography component="div" className="text-xl md:text-2xl">
                   <br />
+                  <ul className="list-disc px-4 space-y-2 md:space-y-4">
+                    <li>
+                      Making api calls to get the data from the backend to
+                      display on all the pages{" "}
+                    </li>
+                    {viewEccom && (
+                      <>
+                        <li>styling the page and making it look good</li>
+                        <li>managing the database </li>
+                        <li>making the cart page </li>
+                        <li>making the checkout page</li>
+                        <li>troubleshooting issues </li>
+                        <li>heavily reviewing the pull requests </li>
+                        <li>and managing the team</li>
+                      </>
+                    )}
+                  </ul>
                   <br />
-                  Making api calls to get the data from the backend to display
-                  on all the pages, styling the page and making it look good,
-                  managing the database, making the cart page , making the
-                  checkout page , troubleshooting issues, heavily reviewing the
-                  pull requests, and managing the team.
+                  <button
+                    className="hover:bg-red-600 antialiased overflow-hidden duration-500 transition-all hover:text-black hover:px-4 hover:bg-opacity-80 hover:text-opacity-100"
+                    onClick={() => setViewEccom(!viewEccom)}
+                  >
+                    {viewEccom ? "Click to view less" : "Read More"}
+                  </button>
                 </Typography>
               </CardContent>
               <CardActions className="flex justify-center">
@@ -89,19 +123,40 @@ export default function Repos() {
             >
               <CardMedia component="img" height="140" image="/repository.png" />
               <CardContent className="text-center text-[#666]">
-                <Typography gutterBottom variant="h4" component="div">
+                <Typography
+                  gutterBottom
+                  className="text-3xl md:text-4xl"
+                  component="p"
+                >
                   Code Differently Bootcamp Work
                 </Typography>
-                <Typography variant="h6">Description:</Typography>
-                <Typography component="div" className="text-2xl">
+                <Typography component="p" className="text-2xl md:text-3xl">
                   In this repository I was responsible for the following:
+                </Typography>
+                <Typography component="div" className="text-xl md:text-2xl">
                   <br />
                   <br />
-                  Making sure my work was consistent and organized, making sure
-                  my code was clean and efficient, making sure my code was
-                  well-tested, making sure my code was well-documented,
-                  understanding the work, troubleshooting issues, rapid
-                  learning, and being a team player to collaborate on tasks.
+                  <ul className="list-disc px-4 space-y-2 md:space-y-4">
+                    <li>Making sure my work was consistent and organized</li>
+                    {viewWork && (
+                      <>
+                        <li>making sure my code was clean and efficient</li>
+                        <li>making sure my code was well-tested </li>
+                        <li> making sure my code was well-documented</li>
+                        <li>understanding the work </li>
+                        <li>troubleshooting issues</li>
+                        <li>rapid learning </li>
+                        <li>and being a team player to collaborate on tasks</li>
+                      </>
+                    )}
+                  </ul>
+                  <br />
+                  <button
+                    className="hover:bg-red-600 antialiased overflow-hidden duration-500 transition-all hover:text-black hover:px-4 hover:bg-opacity-80 hover:text-opacity-100"
+                    onClick={() => setViewWork(!viewWork)}
+                  >
+                    {viewWork ? "Click to view less" : "Read More"}
+                  </button>
                 </Typography>
               </CardContent>
               <CardActions className="flex justify-center">
@@ -113,7 +168,8 @@ export default function Repos() {
     hover:text-black
     hover:px-4
     hover:bg-opacity-80 
-    hover:text-opacity-100"
+    hover:text-opacity-100
+    text-center"
                   size="small"
                   href="https://github.com/code-differently/code-differently-24-q4/pulls?q=is%3Apr+author%3AjosephCabs"
                   target="_blank"

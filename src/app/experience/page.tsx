@@ -9,11 +9,13 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Experience() {
   const [view, setView] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const router = useRouter();
 
   const handleScroll = () => {
     if (window.scrollY > 100) {
@@ -50,6 +52,12 @@ export default function Experience() {
         <h1 className="flex items-center justify-center text-4xl font-bold py-12 text-4xl bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow">
           Experience
         </h1>
+        <button
+          onClick={() => router.push("/")}
+          className="text-3xl left-0 text-red-600 px-6 py-2 rounded hover:bg-red-600 antialiased overflow-hidden duration-500 transition-all hover:text-black hover:px-4 hover:bg-opacity-80 hover:text-opacity-100"
+        >
+          Back to terminal
+        </button>
         <div className="w-[90%] sm:w-[80%] md:w-[60%] flex justify-center text-4xl pb-5">
           <Card
             sx={{ color: "#666", backgroundColor: "#171717" }}

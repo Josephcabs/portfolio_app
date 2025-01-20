@@ -34,8 +34,8 @@ const Terminal = () => {
         setMessages((prevMessages) => prevMessages.slice(-7));
       }
     } else {
-      if (messages.length > 4) {
-        setMessages((prevMessages) => prevMessages.slice(-3));
+      if (messages.length > 2) {
+        setMessages((prevMessages) => prevMessages.slice(-1));
       }
     }
   }, [messages]);
@@ -43,81 +43,87 @@ const Terminal = () => {
   const handleInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const set = ["about", "projects", "contact", "experience"];
     if (e.key === "Enter") {
+      const userInput = input.toLowerCase().trim();
       const newMessages = [...messages, `> ${input}`];
-      if (input.toLowerCase().trim() === "help") {
-        newMessages.push(
-          "Available commands: about, projects, contact, clear, experience",
-        );
-      } else if (input.toLowerCase().trim() === "about") {
-        newMessages.push(
-          "I am a full-stack developer with experience in Java and JavaScript. \n Would you like to know more about me? y/n",
-        );
-        setLastCommand("about");
-        setRoute("about");
-      } else if (
-        input.toLowerCase().trim() === "y" &&
-        lastCommand === "about"
-      ) {
-        router.push("/about");
-      } else if (input.toLowerCase().trim() === "projects") {
-        newMessages.push(
-          "I've worked on multiple projects in group environments. \n Would you like to know more about my projects? y/n",
-        );
-        setLastCommand("projects");
-        setRoute("projects");
-      } else if (
-        input.toLowerCase().trim() === "y" &&
-        lastCommand === "projects"
-      ) {
-        router.push("/repos");
-      } else if (input.toLowerCase().trim() === "contact") {
-        newMessages.push(
-          "You can find me on LinkedIn \n Would you like to know more about ways to connect? y/n",
-        );
-        setLastCommand("contact");
-        setRoute("contact");
-      } else if (
-        lastCommand === "contact" &&
-        input.toLowerCase().trim() === "y"
-      ) {
-        router.push("/contact");
-      } else if (
-        input.toLowerCase().trim() === "n" &&
-        set.includes(lastCommand.toLowerCase().trim())
-      ) {
-        newMessages.push(
-          "Available commands: about, projects, contact, clear, experience",
-        );
-      } else if (input.toLowerCase().trim() === "exit") {
-        setMessages([]);
-      } else if (input.toLowerCase().trim() === "") {
-        return;
-      } else if (input.toLowerCase().trim() === "clear") {
-        newMessages.length = 0;
-        newMessages.push(
-          "Welcome to my portfolio! \nType 'help' to see available commands.",
-        );
-      } else if (input.toLowerCase().trim() === "experience") {
-        newMessages.push(
-          "I have a short yet extensive experience the coding field. \n Would you like to know more about my experience? y/n",
-        );
-        setLastCommand("experience");
-        setRoute("experience");
-      } else if (
-        input.toLowerCase().trim() === "y" &&
-        lastCommand === "experience"
-      ) {
-        router.push("/experience");
-      } else if (
-        (input.toLowerCase().trim() !== "n" ||
-          input.toLowerCase().trim() !== "y") &&
-        set.includes(lastCommand.toLowerCase().trim())
-      ) {
-        newMessages.push("Please select y or n");
-        setLastCommand(route);
-      } else {
-        newMessages.push("Command not found. Type 'help' for options.");
+
+      if (userInput === "") return;
+
+      switch (userInput) {
+        case "help":
+          newMessages.push(
+            "Available commands: about, projects, contact, clear, experience",
+          );
+          break;
+
+        case "about":
+          newMessages.push(
+            "I am a full-stack developer with experience in Java and JavaScript. Would you like to know more about me? y/n",
+          );
+          setLastCommand("about");
+          setRoute("about");
+          break;
+
+        case "projects":
+          newMessages.push(
+            "I've worked on multiple projects in group environments. Would you like to know more about my projects? y/n",
+          );
+          setLastCommand("projects");
+          setRoute("projects");
+          break;
+
+        case "contact":
+          newMessages.push(
+            "You can find me on LinkedIn. Would you like to know more about ways to connect? y/n",
+          );
+          setLastCommand("contact");
+          setRoute("contact");
+          break;
+
+        case "experience":
+          newMessages.push(
+            "I have a short yet extensive experience in the coding field. Would you like to know more about my experience? y/n",
+          );
+          setLastCommand("experience");
+          setRoute("experience");
+          break;
+
+        case "clear":
+          newMessages.length = 0;
+          newMessages.push(
+            "Welcome to my portfolio! Type 'help' to see available commands.",
+          );
+          break;
+
+        case "exit":
+          setMessages([]);
+          return;
+
+        case "y":
+          if (set.includes(lastCommand)) {
+            router.push(route);
+            setRoute("");
+          }
+          break;
+
+        case "n":
+          if (set.includes(lastCommand)) {
+            newMessages.push(
+              "Available commands: about, projects, contact, clear, experience",
+            );
+            setRoute("");
+            setLastCommand("");
+          }
+          break;
+
+        default:
+          if (set.includes(lastCommand)) {
+            newMessages.push("Please select y or n");
+          } else {
+            newMessages.push("Command not found. Type 'help' for options.");
+          }
+          break;
       }
+
       setMessages(newMessages);
       setInput("");
     }
