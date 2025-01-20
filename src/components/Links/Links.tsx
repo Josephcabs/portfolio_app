@@ -70,7 +70,7 @@ export default function Links() {
             >
               Contact
             </button>
-            <button
+            {/* <button
               className="relative 
     cursor-pointer 
     hover:text-[#0a0a0a]
@@ -94,7 +94,7 @@ export default function Links() {
               onClick={() => router.push("/")}
             >
               Home
-            </button>
+            </button> */}
             <button
               className="relative 
     cursor-pointer 
