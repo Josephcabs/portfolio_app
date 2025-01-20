@@ -29,8 +29,14 @@ const Terminal = () => {
   };
 
   useEffect(() => {
-    if (messages.length > 4) {
-      messages.shift();
+    if (window.innerWidth > 768) {
+      if (messages.length > 8) {
+        setMessages((prevMessages) => prevMessages.slice(-7));
+      }
+    } else {
+      if (messages.length > 4) {
+        setMessages((prevMessages) => prevMessages.slice(-3));
+      }
     }
   }, [messages]);
 
@@ -44,9 +50,8 @@ const Terminal = () => {
         );
       } else if (input.toLowerCase().trim() === "about") {
         newMessages.push(
-          "I am a full-stack developer with experience in Java and JavaScript.",
+          "I am a full-stack developer with experience in Java and JavaScript. \n Would you like to know more about me? y/n",
         );
-        newMessages.push("Would you like to know more about me? y/n");
         setLastCommand("about");
         setRoute("about");
       } else if (
@@ -56,9 +61,8 @@ const Terminal = () => {
         router.push("/about");
       } else if (input.toLowerCase().trim() === "projects") {
         newMessages.push(
-          "I've worked on multiple projects in group environments.",
+          "I've worked on multiple projects in group environments. \n Would you like to know more about my projects? y/n",
         );
-        newMessages.push("Would you like to know more about my projects? y/n");
         setLastCommand("projects");
         setRoute("projects");
       } else if (
@@ -67,9 +71,8 @@ const Terminal = () => {
       ) {
         router.push("/repos");
       } else if (input.toLowerCase().trim() === "contact") {
-        newMessages.push("You can find me on LinkedIn");
         newMessages.push(
-          "Would you like to know more about ways to connect? y/n",
+          "You can find me on LinkedIn \n Would you like to know more about ways to connect? y/n",
         );
         setLastCommand("contact");
         setRoute("contact");
@@ -92,15 +95,11 @@ const Terminal = () => {
       } else if (input.toLowerCase().trim() === "clear") {
         newMessages.length = 0;
         newMessages.push(
-          "Welcome to my portfolio!",
-          "Type 'help' to see available commands.",
+          "Welcome to my portfolio! \nType 'help' to see available commands.",
         );
       } else if (input.toLowerCase().trim() === "experience") {
         newMessages.push(
-          "I have a short yet extensive experience the coding field",
-        );
-        newMessages.push(
-          "Would you like to know more about my experience? y/n",
+          "I have a short yet extensive experience the coding field. \n Would you like to know more about my experience? y/n",
         );
         setLastCommand("experience");
         setRoute("experience");
@@ -127,7 +126,7 @@ const Terminal = () => {
   return (
     <div className="bg-black">
       <div
-        className="overflow-y-hidden bg-black text-red-600 font-mono p-6 rounded-lg shadow-lg w-full max-w-lg mx-auto mt-0 border border-red-600 transition-all duration-500 hover:shadow-2xl hover:bg-[#0a0a0a]
+        className="overflow-y-auto bg-black text-red-600 font-mono p-6 rounded-lg shadow-lg w-full max-w-lg mx-auto mt-0 border border-red-600 transition-all duration-500 hover:shadow-2xl hover:bg-[#0a0a0a]
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
       >
         <div ref={messagesEndRef}>
