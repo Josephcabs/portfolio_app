@@ -1,12 +1,26 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Links() {
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  useEffect(() => {
+    if (window.innerWidth > 640) {
+      setIsOpen(true);
+    }
+  }, []);
   return (
     <>
-      <button
-        className="relative 
+      <div
+        className={`md:transition-none transition-all duration-700 ease-in-out overflow-hidden sm:flex-row flex flex-wrap items-center justify-center ${
+          isOpen ? " max-h-[275px] scale-100" : " max-h-[200px] scale-95"
+        } opacity-100  w-full mx-auto p-14 rounded-md gap-3 xl:gap-28 lg:gap-24 md:gap-10 `}
+      >
+        {isOpen && (
+          <>
+            <button
+              className="relative 
     cursor-pointer 
     hover:text-[#0a0a0a]
     hover:rounded-lg
@@ -26,12 +40,12 @@ export default function Links() {
     hover:text-opacity-100
     hover:animate-pulse
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
-        onClick={() => router.push("/experience")}
-      >
-        Experience
-      </button>
-      <button
-        className="relative 
+              onClick={() => router.push("/experience")}
+            >
+              Experience
+            </button>
+            <button
+              className="relative 
     cursor-pointer 
     hover:text-[#0a0a0a]
     hover:rounded-lg
@@ -52,12 +66,12 @@ export default function Links() {
     hover:animate-pulse
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow
     "
-        onClick={() => router.push("/contact")}
-      >
-        Contact
-      </button>
-      <button
-        className="relative 
+              onClick={() => router.push("/contact")}
+            >
+              Contact
+            </button>
+            <button
+              className="relative 
     cursor-pointer 
     hover:text-[#0a0a0a]
     hover:rounded-lg
@@ -77,12 +91,12 @@ export default function Links() {
     hover:text-opacity-100
     hover:animate-pulse
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
-        onClick={() => router.push("/")}
-      >
-        Home
-      </button>
-      <button
-        className="relative 
+              onClick={() => router.push("/")}
+            >
+              Home
+            </button>
+            <button
+              className="relative 
     cursor-pointer 
     hover:text-[#0a0a0a]
     hover:rounded-lg
@@ -102,12 +116,12 @@ export default function Links() {
     hover:text-opacity-100
     hover:animate-pulse
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
-        onClick={() => router.push("/repos")}
-      >
-        Repositories
-      </button>
-      <button
-        className="relative 
+              onClick={() => router.push("/repos")}
+            >
+              Repositories
+            </button>
+            <button
+              className="relative 
     cursor-pointer 
     hover:text-[#0a0a0a]
     hover:rounded-lg
@@ -127,10 +141,19 @@ export default function Links() {
     hover:text-opacity-100
     hover:animate-pulse
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
-        onClick={() => router.push("/about")}
-      >
-        About
-      </button>
+              onClick={() => router.push("/about")}
+            >
+              About
+            </button>
+          </>
+        )}
+        <button
+          className="md:hidden flex flex-col justify-center transition-all duration-300 rounded-md bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? "Close Menu" : "Open Menu"}
+        </button>
+      </div>
     </>
   );
 }
