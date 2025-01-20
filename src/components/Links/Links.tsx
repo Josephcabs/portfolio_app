@@ -28,7 +28,7 @@ export default function Links() {
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
         onClick={() => router.push("/experience")}
       >
-        Work Experience
+        Experience
       </button>
       <button
         className="relative 
@@ -54,7 +54,7 @@ export default function Links() {
     "
         onClick={() => router.push("/contact")}
       >
-        Contact Me
+        Contact
       </button>
       <button
         className="relative 
@@ -129,7 +129,7 @@ export default function Links() {
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
         onClick={() => router.push("/about")}
       >
-        About Me
+        About
       </button>
     </>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Terminal = () => {
@@ -11,7 +11,14 @@ const Terminal = () => {
   ]);
   const [lastCommand, setLastCommand] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   const handleInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const set = ["about", "projects", "contact", "experience"];
@@ -100,21 +107,28 @@ const Terminal = () => {
   };
 
   return (
-    <div className="overflow-y-auto bg-black text-red-600 font-mono p-6 rounded-lg shadow-lg w-full max-w-lg mx-auto mt-20 border border-red-600">
-      <div ref={messagesEndRef}>
-        {messages.map((msg, index) => (
-          <p key={index}>{msg}</p>
-        ))}
-      </div>
-      <div className="flex">
-        <span className="mr-2">$</span>
-        <input
-          className="bg-black border-none outline-none text-red-600 w-full"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleInput}
-          autoFocus
-        />
+    <div className="bg-black">
+      <div
+        className="overflow-y-auto bg-black text-red-600 font-mono p-6 rounded-lg shadow-lg w-full max-w-lg mx-auto mt-20 border border-red-600 transition-all duration-500 hover:shadow-2xl hover:bg-[#0a0a0a]
+    bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
+      >
+        <div ref={messagesEndRef}>
+          {messages.map((msg, index) => (
+            <p key={index}>{msg}</p>
+          ))}
+        </div>
+        <div className="flex">
+          <span className="mr-2">$</span>
+          <input
+            ref={inputRef}
+            className="bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow border-none outline-none text-red-600 w-full"
+            value={input}
+            onBlur={() => inputRef.current?.focus()}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleInput}
+            autoFocus
+          />
+        </div>
       </div>
     </div>
   );
