@@ -15,7 +15,7 @@ export default function Links() {
       <div
         className={`md:transition-none transition-all duration-700 ease-in-out overflow-hidden sm:flex-row flex flex-wrap items-center justify-center ${
           isOpen ? " max-h-[275px] scale-100" : " max-h-[200px] scale-95"
-        } opacity-100  w-full mx-auto p-14 rounded-md gap-3 xl:gap-28 lg:gap-24 md:gap-10 `}
+        } opacity-100 pt-0 md:pt-12 w-full mx-auto p-14 rounded-md gap-3 xl:gap-28 lg:gap-24 md:gap-10 `}
       >
         {isOpen && (
           <>
