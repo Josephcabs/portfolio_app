@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center text-[#666] ">
+      <div className="flex flex-col items-center justify-center text-[#666] pb-12 ">
         <div className="text-2xl">
           <h1 className="flex tems-center justify-center text-4xl font-bold py-12 text-4xl bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow">
             Home
