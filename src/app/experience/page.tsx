@@ -171,6 +171,55 @@ export default function Experience() {
             </CardActions>
           </Card>
         </div>
+        <div className="w-[90%] sm:w-[80%] md:w-[60%] flex justify-center text-4xl pb-5">
+          <Card
+            sx={{ color: "#666", backgroundColor: "#171717" }}
+            className="transition-all duration-300 border-2 border-transparent hover:border-red-600 hover:shadow-lg hover:shadow-red-600"
+          >
+            <CardHeader
+              sx={{
+                display: "flex",
+                width: "100%",
+              }}
+              avatar={
+                <Avatar
+                  sx={{ height: 100, width: 100 }}
+                  className="bg-transparent"
+                  aria-label="github"
+                  variant="circular"
+                  src="/resume.png"
+                />
+              }
+            />
+            <CardContent>
+              <Typography
+                gutterBottom
+                component="p"
+                className="text-center text-1xl md:font-bold md:text-2xl"
+              >
+                Here is my Resume for more
+              </Typography>
+            </CardContent>
+            <CardActions className="flex justify-center">
+              <Button
+                href="/resume.pdf"
+                target="_blank"
+                size="small"
+                className="hover:bg-red-600 antialiased 
+    overflow-hidden 
+    duration-500 
+    transition-all 
+    hover:text-black
+    hover:px-4
+    hover:bg-opacity-80 
+    hover:text-opacity-100"
+                sx={{ fontSize: "1rem", color: "#666" }}
+              >
+                View My Resume
+              </Button>
+            </CardActions>
+          </Card>
+        </div>
       </div>
       {isVisible && (
         <button
