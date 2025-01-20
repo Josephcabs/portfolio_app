@@ -10,15 +10,23 @@ const Terminal = () => {
     "Type 'help' to see available commands.",
   ]);
   const [lastCommand, setLastCommand] = useState("");
+  const [route, setRoute] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   useEffect(() => {
+    handleBlur();
+  }, []);
+
+  const handleBlur = () => {
+    if (window.innerWidth < 768) {
+      return;
+    }
     if (inputRef.current) {
       inputRef.current.focus();
     }
-  }, []);
+  };
 
   const handleInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const set = ["about", "projects", "contact", "experience"];
@@ -34,6 +42,7 @@ const Terminal = () => {
         );
         newMessages.push("Would you like to know more about me? y/n");
         setLastCommand("about");
+        setRoute("about");
       } else if (
         input.toLowerCase().trim() === "y" &&
         lastCommand === "about"
@@ -45,6 +54,7 @@ const Terminal = () => {
         );
         newMessages.push("Would you like to know more about my projects? y/n");
         setLastCommand("projects");
+        setRoute("projects");
       } else if (
         input.toLowerCase().trim() === "y" &&
         lastCommand === "projects"
@@ -56,6 +66,7 @@ const Terminal = () => {
           "Would you like to know more about ways to connect? y/n",
         );
         setLastCommand("contact");
+        setRoute("contact");
       } else if (
         lastCommand === "contact" &&
         input.toLowerCase().trim() === "y"
@@ -86,18 +97,19 @@ const Terminal = () => {
           "Would you like to know more about my experience? y/n",
         );
         setLastCommand("experience");
+        setRoute("experience");
       } else if (
         input.toLowerCase().trim() === "y" &&
         lastCommand === "experience"
       ) {
         router.push("/experience");
       } else if (
-        input.toLowerCase().trim() !== "n" ||
-        (input.toLowerCase().trim() !== "y" &&
-          set.includes(lastCommand.toLowerCase().trim()))
+        (input.toLowerCase().trim() !== "n" ||
+          input.toLowerCase().trim() !== "y") &&
+        set.includes(lastCommand.toLowerCase().trim())
       ) {
         newMessages.push("Please select y or n");
-        setLastCommand("experience");
+        setLastCommand(route);
       } else {
         newMessages.push("Command not found. Type 'help' for options.");
       }
@@ -121,12 +133,13 @@ const Terminal = () => {
           <span className="mr-2">$</span>
           <input
             ref={inputRef}
-            className="bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow border-none outline-none text-red-600 w-full"
+            className="bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow border-none outline-none text-red-600 w-full placeholder:text-red-600"
             value={input}
-            onBlur={() => inputRef.current?.focus()}
+            onBlur={handleBlur}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleInput}
             autoFocus
+            placeholder="Type a command..."
           />
         </div>
       </div>

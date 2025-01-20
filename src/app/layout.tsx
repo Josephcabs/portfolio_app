@@ -36,7 +36,7 @@ export default function RootLayout({
           <div className="text-4xl font-bold text-center">
             <Header />
           </div>
-          <div className="flex items-center justify-center  text-2xl w-full">
+          <div className="flex items-center justify-center text-2xl w-full">
             <Links />
           </div>
         </div>
