@@ -2,6 +2,8 @@
 
 import clsx from "clsx";
 import { useState } from "react";
+import { ResizableBox } from "react-resizable";
+import "react-resizable/css/styles.css";
 
 export default function VideoToggle() {
   const [videoVisible, setVideoVisible] = useState(false);
@@ -19,7 +21,7 @@ export default function VideoToggle() {
             "fixed",
             {
               "bottom-0": !videoVisible,
-              "bottom-[30%]": videoVisible,
+              "bottom-auto": videoVisible,
               "bg-transparent": !videoVisible,
               "bg-red-600": videoVisible,
             },
@@ -28,16 +30,23 @@ export default function VideoToggle() {
         >
           {videoVisible ? "Hide Video" : "Show Video"}
         </button>
-        {videoVisible && (
+        <ResizableBox
+          width={400}
+          height={300}
+          minConstraints={[200, 150]}
+          maxConstraints={[800, 600]}
+          resizeHandles={["se", "sw", "ne", "nw", "n", "s", "e", "w"]}
+          className={`fixed bottom-0 ${videoVisible ? "block" : "hidden"} border-2 border-red-600 left-0 z-10`}
+        >
           <iframe
-            className="fixed bottom-0 left-0 w-full md:w-[20%] h-[30%] md:h-auto z-10"
+            className="w-full h-full"
             allow="autoplay; fullscreen"
             allowFullScreen
-            src="https://www.youtube.com/embed/gaOTSMB6hLQ&t=1s?autoplay=1&mute=1&loop=1&playlist=gaOTSMB6hLQ&t=1s"
+            src="https://pluto.tv/us/on-demand/movies/663421fab978550013fb596c"
           >
             Your browser does not support the video tag.
           </iframe>
-        )}
+        </ResizableBox>
       </div>
     </>
   );
