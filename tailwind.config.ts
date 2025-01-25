@@ -19,6 +19,7 @@ export default {
         },
       },
       colors: {
+        dynamic: "var(--dynamic-color)",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

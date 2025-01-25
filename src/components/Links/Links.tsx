@@ -1,9 +1,11 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Loader from "../Loader";
 
 export default function Links() {
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   useEffect(() => {
     if (window.innerWidth > 640) {
@@ -40,7 +42,11 @@ export default function Links() {
     hover:text-opacity-100
     hover:animate-pulse
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
-              onClick={() => router.push("/experience")}
+              onClick={() => {
+                setLoading(true);
+                router.push("/experience");
+                setLoading(false);
+              }}
             >
               Experience
             </button>
@@ -66,7 +72,11 @@ export default function Links() {
     hover:animate-pulse
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow
     "
-              onClick={() => router.push("/contact")}
+              onClick={() => {
+                setLoading(true);
+                router.push("/contact");
+                setLoading(false);
+              }}
             >
               Contact
             </button>
@@ -116,7 +126,11 @@ export default function Links() {
     hover:text-opacity-100
     hover:animate-pulse
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
-              onClick={() => router.push("/repos")}
+              onClick={() => {
+                setLoading(true);
+                router.push("/repos");
+                setLoading(false);
+              }}
             >
               Repositories
             </button>
@@ -141,7 +155,11 @@ export default function Links() {
     hover:text-opacity-100
     hover:animate-pulse
     bg-gradient-to-r from-[#8a0303] via-red-600 to-[#8a0303] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
-              onClick={() => router.push("/about")}
+              onClick={() => {
+                setLoading(true);
+                router.push("/about");
+                setLoading(false);
+              }}
             >
               About
             </button>
@@ -154,6 +172,8 @@ export default function Links() {
           {isOpen ? "Close Menu" : "Open Menu"}
         </button>
       </div>
+
+      {loading && <Loader />}
     </>
   );
 }

@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 // import VideoToggle from "@/components/VideoToggle/VideoToggle";
 import { Analytics } from "@vercel/analytics/react";
 import { Suspense } from "react";
-import Loader from "@/components/Loader/Loader";
+import Loader from "@/components/Loader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
