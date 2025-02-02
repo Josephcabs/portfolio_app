@@ -1,10 +1,12 @@
 "use client";
 
 import Terminal from "@/components/Terminal/Terminal";
+import { useColor } from "@/lib/provider/ColorProvider";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
+  const { screenColor } = useColor();
 
   const handleScroll = () => {
     // Show the button when the user scrolls down
@@ -38,9 +40,10 @@ export default function Home() {
       </div>
       {isVisible && (
         <button
+          style={{ "--dynamic-color": screenColor } as React.CSSProperties}
           id="back-to-top"
           onClick={scrollToTop}
-          className="fixed bottom-0 right-0 text-1xl text-[#666] w-auto transition-all duration-500 hover:text-black hover:bg-red-600 font-bold hover:bg-opacity-80 
+          className="fixed bottom-0 right-0 text-1xl text-[#666] w-auto transition-all duration-500 hover:text-black hover:bg-dynamic font-bold hover:bg-opacity-80 
     hover:text-opacity-100 
     antialiased 
     overflow-hidden 
