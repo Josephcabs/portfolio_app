@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import { Analytics } from "@vercel/analytics/react";
 import { Suspense } from "react";
 import Loader from "@/components/Loader";
+import { ColorProvider } from "@/lib/provider/ColorProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,28 +30,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    //TODO - make background dynamic and find more color neutral pictures (maybe make pictures be dynamic to the colors)
     <html lang="en">
       <Analytics />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Suspense fallback={<Loader />}>
-          <div className="w-full flex flex-col sticky top-0 z-1000 bg-[#0a0a0a]">
-            <div className="text-4xl font-bold text-center">
-              <Header />
+          <ColorProvider>
+            <div className="w-full flex flex-col sticky top-0 z-1000 bg-[#0a0a0a]">
+              <div className="text-4xl font-bold text-center">
+                <Header />
+              </div>
+              <div className="flex items-center justify-center text-2xl w-full">
+                <Links />
+              </div>
             </div>
-            <div className="flex items-center justify-center text-2xl w-full">
-              <Links />
-            </div>
-          </div>
-          {children}
-          {/* <VideoToggle /> */}
-          <img
-            src="/boxing.png"
-            alt="Boxing"
-            className="fixed bottom-0 left-0 right-0 top-0 h-full w-full -z-10"
-            loading="lazy"
-          />
+            {children}
+
+            {/* <VideoToggle /> */}
+            <img
+              src="/boxing.png"
+              alt="Boxing"
+              className="fixed bottom-0 left-0 right-0 top-0 h-full w-full -z-10"
+              loading="lazy"
+            />
+          </ColorProvider>
         </Suspense>
       </body>
     </html>

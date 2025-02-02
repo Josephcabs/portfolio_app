@@ -1,5 +1,7 @@
 "use client";
 
+import { useColor } from "@/lib/provider/ColorProvider";
+import Cookies from "js-cookie";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import rgbHex from "rgb-hex";
@@ -16,10 +18,10 @@ interface RGBColor {
 
 const Terminal = () => {
   const [color, setColor] = useState<RGBColor>({ r: 220, g: 38, b: 38 });
-  const [hexColor, setHexColor] = useState("#" + rgbHex(220, 38, 38));
+  const { screenColor, setScreenColor } = useColor();
   const [gradientColors, setGradientColors] = useState({
-    lighterColor: adjustBrightness(hexColor, 20),
-    darkerColor: adjustBrightness(hexColor, -20),
+    lighterColor: adjustBrightness(screenColor, 20),
+    darkerColor: adjustBrightness(screenColor, -20),
   });
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([
@@ -47,13 +49,12 @@ const Terminal = () => {
   };
 
   const handleColorReset = () => {
-    sessionStorage.removeItem("hexColor");
     setColor({ r: 220, g: 38, b: 38 });
-    setHexColor("#" + rgbHex(220, 38, 38));
-    setGradientColors({
-      lighterColor: adjustBrightness(hexColor, 20),
-      darkerColor: adjustBrightness(hexColor, -40),
-    });
+    setScreenColor("#" + rgbHex(220, 38, 38));
+    // setGradientColors({
+    //   lighterColor: adjustBrightness(screenColor, 20),
+    //   darkerColor: adjustBrightness(screenColor, -40),
+    // });
   };
 
   const handleColorChange = (newColor: RGBColor) => {
@@ -61,30 +62,21 @@ const Terminal = () => {
   };
   //TODO: handle color change and common functions in utils.ts when the time comes
   useEffect(() => {
-    setHexColor("#" + rgbHex(color.r, color.g, color.b));
+    setScreenColor("#" + rgbHex(color.r, color.g, color.b));
     setGradientColors({
-      lighterColor: adjustBrightness(hexColor, 20),
-      darkerColor: adjustBrightness(hexColor, -40),
+      lighterColor: adjustBrightness(screenColor, 20),
+      darkerColor: adjustBrightness(screenColor, -40),
     });
     setLoading(false);
-  }, [color, hexColor]);
+  }, [color, screenColor, setScreenColor]);
 
   useEffect(() => {
     setLoading(true);
-    const sessionColor = sessionStorage.getItem("hexColor");
-    const { red, green, blue } = hexRgb(
-      sessionColor || "#" + rgbHex(220, 38, 38),
-    );
+    const cookie = Cookies.get("userToken");
+    const { red, green, blue } = hexRgb(cookie || "#" + rgbHex(220, 38, 38));
     setColor({ r: red, g: green, b: blue });
     handleBlur();
   }, []);
-
-  // if(typeof window !== "undefined") {
-  //   window.onbeforeunload = () => {
-  //     sessionStorage.setItem("hexColor", hexColor);
-  //     console.log(hexColor);
-  //   };
-  // }
 
   useEffect(() => {
     if (window.innerWidth > 768) {
@@ -115,13 +107,13 @@ const Terminal = () => {
 
         case "reset-color":
           newMessages.push("Color reset.");
+          Cookies.remove("userToken");
           handleColorReset();
           break;
 
         case "keep-color":
           newMessages.push("Saved color.");
-          sessionStorage.setItem("hexColor", hexColor);
-          console.log("Color saved.", sessionStorage.getItem("hexColor"));
+          Cookies.set("userToken", screenColor, { expires: 7, path: "/" });
           break;
 
         // case "set-color":
@@ -212,12 +204,12 @@ const Terminal = () => {
       <h1
         style={
           {
-            "--dynamic-color": hexColor,
-            "--gradient-bg": `linear-gradient(to right, ${gradientColors.darkerColor}, ${hexColor}, ${gradientColors.darkerColor})`,
+            "--dynamic-color": screenColor,
+            "--gradient-bg": `linear-gradient(to right, ${gradientColors.darkerColor}, ${screenColor}, ${gradientColors.darkerColor})`,
             backgroundImage: "var(--gradient-bg)",
           } as React.CSSProperties
         }
-        className="flex tems-center justify-center text-4xl font-bold py-12 text-4xl bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
+        className="flex items-center justify-center text-4xl font-bold py-12 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-flow"
       >
         Terminal
       </h1>
@@ -226,8 +218,8 @@ const Terminal = () => {
         <div
           style={
             {
-              "--dynamic-color": hexColor,
-              "--gradient-bg": `linear-gradient(to right, ${gradientColors.darkerColor}, ${hexColor}, ${gradientColors.darkerColor})`,
+              "--dynamic-color": screenColor,
+              "--gradient-bg": `linear-gradient(to right, ${gradientColors.darkerColor}, ${screenColor}, ${gradientColors.darkerColor})`,
               backgroundImage: "var(--gradient-bg)",
             } as React.CSSProperties
           }
@@ -246,8 +238,8 @@ const Terminal = () => {
               ref={inputRef}
               style={
                 {
-                  "--dynamic-color": hexColor,
-                  "--gradient-bg": `linear-gradient(to right, ${gradientColors.darkerColor}, ${hexColor}, ${gradientColors.darkerColor})`,
+                  "--dynamic-color": screenColor,
+                  "--gradient-bg": `linear-gradient(to right, ${gradientColors.darkerColor}, ${screenColor}, ${gradientColors.darkerColor})`,
                   backgroundImage: "var(--gradient-bg)",
                 } as React.CSSProperties
               }
@@ -267,8 +259,8 @@ const Terminal = () => {
         <button
           style={
             {
-              "--dynamic-color": hexColor,
-              "--gradient-bg": `linear-gradient(to right, ${gradientColors.darkerColor}, ${hexColor}, ${gradientColors.darkerColor})`,
+              "--dynamic-color": screenColor,
+              "--gradient-bg": `linear-gradient(to right, ${gradientColors.darkerColor}, ${screenColor}, ${gradientColors.darkerColor})`,
               backgroundImage: "var(--gradient-bg)",
             } as React.CSSProperties
           }
@@ -288,8 +280,8 @@ const Terminal = () => {
               onClick={handleColorReset}
               style={
                 {
-                  "--dynamic-color": hexColor,
-                  "--gradient-bg": `linear-gradient(to right, ${gradientColors.darkerColor}, ${hexColor}, ${gradientColors.darkerColor})`,
+                  "--dynamic-color": screenColor,
+                  "--gradient-bg": `linear-gradient(to right, ${gradientColors.darkerColor}, ${screenColor}, ${gradientColors.darkerColor})`,
                   backgroundImage: "var(--gradient-bg)",
                 } as React.CSSProperties
               }
