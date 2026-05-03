@@ -1,0 +1,48 @@
+name: Local Private Agent Runner
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "Task for local agent"
+        required: true
+        type: string
+
+jobs:
+  local-agent:
+    runs-on: [self-hosted, linux, arm64, raspberry-pi]
+
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+    
+      - name: Print task
+        run: |
+          echo "Task received:"
+          echo "${{ inputs.task }}"
+    
+      - name: Create test file
+        run: |
+          echo "${{ inputs.task }}" > pi-agent-test.md
+          git config user.name "pi-agent"
+          git config user.email "pi-agent@local"
+          git checkout -b ai/pi-agent-test-${{ github.run_id }}
+          git add pi-agent-test.md
+          git commit -m "test pi agent workflow"
+          git push origin HEAD
+    
+      - name: Open PR
+        run: |
+          gh pr create \
+            --base develop \
+            --head ai/pi-agent-test-${{ github.run_id }} \
+            --title "Test Pi agent workflow" \
+            --body "This PR proves the Raspberry Pi self-hosted runner can create a branch and PR."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
