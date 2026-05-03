@@ -1,0 +1,17 @@
+name: Test Pi Runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: [self-hosted, linux, arm64, raspberry-pi]
+
+    steps:
+      - name: Confirm Runner
+        run: |
+          echo "Running on Raspberry Pi"
+          uname -a
+          whoami
+          node -v || true
+          git --version
